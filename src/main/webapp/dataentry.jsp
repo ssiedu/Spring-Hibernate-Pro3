@@ -1,7 +1,7 @@
 <html>
 <body>
 	<h3>Student-Entry-Form</h3>
-		<form action="savestudent">
+		<form action="savestudent" method="POST">
 		<pre>
 			RollNo	<input type="text" name="rno"/>
 			SName	<input type="text" name="name"/>
