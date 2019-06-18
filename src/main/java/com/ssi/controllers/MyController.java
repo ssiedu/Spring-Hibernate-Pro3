@@ -29,7 +29,7 @@ public class MyController {
 	@RequestMapping("updatestudent")
 	public ModelAndView showUpdateForm(@RequestParam("id") int code){
 		Student student=studentDAO.getStudentById(code);
-		ModelAndView mv=new ModelAndView("updateform.jsp");
+		ModelAndView mv=new ModelAndView("updateform");
 		mv.addObject("student", student);
 		return mv;
 	}
@@ -44,7 +44,7 @@ public class MyController {
 	@RequestMapping("viewallstudents")
 	public ModelAndView showAllStudents(){
 		List<Student> students=	studentDAO.getAllStudents();
-		ModelAndView mv=new ModelAndView("studentjstl.jsp");
+		ModelAndView mv=new ModelAndView("studentjstl");
 		mv.addObject("students", students);
 		return mv;
 	}
@@ -53,30 +53,30 @@ public class MyController {
 	public ModelAndView doSearch(@RequestParam("t1") int code){
 		Student student=studentDAO.getStudentById(code);
 		if(student==null){
-			ModelAndView mv=new ModelAndView("search.jsp");
+			ModelAndView mv=new ModelAndView("search");
 			mv.addObject("searchErr","Invalid Roll Number");
 			return mv;
 		}
 		//ModelAndView mv=new ModelAndView("searchresult.jsp");
-		ModelAndView mv=new ModelAndView("studentdetails.jsp");
+		ModelAndView mv=new ModelAndView("studentdetails");
 		mv.addObject("student", student);
 		return mv;
 	}
 	
 	@RequestMapping("searchstudent")
 	public String showSearchForm(){
-		return "search.jsp";
+		return "search";
 	}
 	
 	@RequestMapping(value="savestudent",method=RequestMethod.GET)
 	public String showEntryForm(){
-		return "dataentry.jsp";
+		return "dataentry";
 	}
 	
 	@RequestMapping(value="savestudent",method=RequestMethod.POST)
 	public ModelAndView addStudentData(@ModelAttribute("student") Student student){
 		studentDAO.addStudent(student);
-		ModelAndView mv=new ModelAndView("saveconfirm.jsp");
+		ModelAndView mv=new ModelAndView("saveconfirm");
 		return mv;
 	}
 }
